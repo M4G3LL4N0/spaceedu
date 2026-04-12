@@ -1,134 +1,107 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  Rocket,
-  Orbit,
-  Telescope,
-  GraduationCap,
   Radar,
+  GraduationCap,
+  Orbit,
   BookOpen,
-  Globe2,
+  Telescope,
   PlayCircle,
+  Rocket,
+  Globe2,
+  Activity,
 } from "lucide-react";
+import PageShell from "@/components/PageShell";
+import SectionHeading from "@/components/SectionHeading";
+import MissionCard from "@/components/missions/MissionCard";
+import { getFeaturedMissions, getMissionCounts, missions } from "@/data/missions";
 
-const featuredMissions = [
-  {
-    name: "Artemis II",
-    status: "Featured lunar mission",
-    blurb:
-      "Follow crew milestones, mission phases, trajectory context, and why this flight matters for the next era of human lunar exploration.",
-  },
-  {
-    name: "Gateway",
-    status: "Lunar infrastructure",
-    blurb:
-      "Explore the station architecture around the Moon and how it connects sustained exploration, science, and future missions.",
-  },
-  {
-    name: "ISS + Crewed Flight",
-    status: "Live orbital activity",
-    blurb:
-      "Track what is happening in low Earth orbit and understand how ongoing crew operations connect to the future beyond Earth.",
-  },
-];
-
-const features = [
+const featureCards = [
   {
     icon: Radar,
     title: "Mission Tracking",
-    text: "Clean mission pages with timelines, milestones, vehicle context, and what happens next.",
+    text: "Follow major missions with clear timelines, key milestones, and what happens next.",
   },
   {
     icon: GraduationCap,
     title: "Adaptive Education",
-    text: "A smarter learning layer that helps people discover what they did not know to search for.",
+    text: "Turn space curiosity into guided learning paths for beginners, students, and enthusiasts.",
   },
   {
     icon: Orbit,
-    title: "Interactive Exploration",
-    text: "Premium visual storytelling around trajectories, programs, spacecraft, destinations, and mission history.",
+    title: "System Understanding",
+    text: "Go beyond isolated missions and understand how spacecraft, destinations, and programs connect.",
   },
   {
     icon: BookOpen,
-    title: "Explainers by Level",
-    text: "Understand space missions in beginner, student, enthusiast, and technical modes.",
+    title: "Companion Explanations",
+    text: "Build an intelligent layer that explains events in plain language without flattening the wonder.",
   },
 ];
 
-const pillars = [
-  "Artemis and lunar exploration",
-  "Mission timelines and milestone tracking",
-  "Spacecraft, crews, and hardware explainers",
-  "Personalized discovery across related missions",
-  "Future expansion into alerts, dashboards, and education tools",
+const pathways = [
+  {
+    title: "Follow Artemis",
+    text: "Start with the missions drawing the most attention and build understanding from there.",
+  },
+  {
+    title: "Understand Systems",
+    text: "Learn how spacecraft, stations, surface systems, and future pathways connect.",
+  },
+  {
+    title: "Return Daily",
+    text: "Use dashboards, alerts, and adaptive discovery to make exploration habit-forming.",
+  },
 ];
 
-export default function Home() {
+export default function HomePage() {
+  const featuredMissions = getFeaturedMissions();
+  const counts = getMissionCounts();
+
   return (
-    <main className="page-shell">
-      <div className="ambient ambient-1" />
-      <div className="ambient ambient-2" />
-      <div className="ambient ambient-3" />
-
-      <header className="site-header">
-        <Link href="/" className="brand">
-          <Globe2 size={18} />
-          <span>SpaceEdu</span>
-        </Link>
-
-        <nav className="nav">
-          <a href="#missions">Missions</a>
-          <a href="#features">Features</a>
-          <a href="#vision">Vision</a>
-        </nav>
-
-        <a href="#launch" className="nav-cta">
-          Build the Future
-        </a>
-      </header>
-
+    <PageShell>
       <section className="hero">
         <div className="hero-copy">
           <div className="eyebrow">
             <Rocket size={16} />
-            <span>Interactive mission intelligence for the new space era</span>
+            <span>Space mission discovery + education companion</span>
           </div>
 
           <h1>
             Follow every mission.
             <br />
-            Understand every moment.
+            Learn the future of space.
           </h1>
 
           <p className="hero-text">
-            SpaceEdu turns space exploration into a premium interactive learning
-            experience — starting with Artemis, lunar missions, crewed
-            spaceflight, and the systems shaping humanity’s return to deep
-            space.
+            SpaceEdu transforms space activity into a premium interactive
+            product — mission tracking, educational context, adaptive
+            discovery, and beautifully structured pathways into Artemis,
+            lunar infrastructure, orbital operations, and beyond.
           </p>
 
           <div className="hero-actions">
-            <a href="#missions" className="btn btn-primary">
+            <Link href="/missions" className="btn btn-primary">
               Explore Missions
               <ArrowRight size={18} />
-            </a>
-            <a href="#vision" className="btn btn-secondary">
-              See the Vision
-            </a>
+            </Link>
+            <Link href="/learn" className="btn btn-secondary">
+              Start Learning
+            </Link>
           </div>
 
           <div className="hero-stats">
             <div className="stat-card">
-              <span className="stat-kicker">Category</span>
-              <strong>Space education platform</strong>
+              <span className="stat-kicker">Product</span>
+              <strong>Interactive space education platform</strong>
             </div>
             <div className="stat-card">
               <span className="stat-kicker">Wedge</span>
-              <strong>Artemis + lunar mission discovery</strong>
+              <strong>Artemis + Moon + human spaceflight</strong>
             </div>
             <div className="stat-card">
-              <span className="stat-kicker">Model</span>
-              <strong>Consumer + education + premium tools</strong>
+              <span className="stat-kicker">Expansion</span>
+              <strong>Dashboard + discovery + learning graph</strong>
             </div>
           </div>
         </div>
@@ -137,19 +110,20 @@ export default function Home() {
           <div className="panel glass">
             <div className="panel-topline">
               <span className="live-dot" />
-              <span>Flagship Experience</span>
+              <span>Flagship interface concept</span>
             </div>
 
-            <h2>Mission Companion Interface</h2>
+            <h2>Mission Companion</h2>
             <p>
-              A layered mission page that combines live mission context,
-              explainers, spacecraft intelligence, and recommended discoveries.
+              A layered product surface that combines mission status,
+              contextual explainers, related discoveries, and structured
+              pathways into deeper understanding.
             </p>
 
             <div className="panel-grid">
               <div className="mini-card">
                 <Telescope size={18} />
-                <span>Mission timelines</span>
+                <span>Mission pages</span>
               </div>
               <div className="mini-card">
                 <PlayCircle size={18} />
@@ -157,50 +131,60 @@ export default function Home() {
               </div>
               <div className="mini-card">
                 <Orbit size={18} />
-                <span>Program maps</span>
+                <span>System maps</span>
               </div>
               <div className="mini-card">
-                <BookOpen size={18} />
-                <span>Learning layers</span>
+                <Globe2 size={18} />
+                <span>Learning pathways</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="missions" className="section">
-        <div className="section-heading">
-          <span className="section-kicker">Launch wedge</span>
-          <h2>Start with the missions people are already emotionally drawn to</h2>
-          <p>
-            SpaceEdu launches with a focused wedge: Artemis, lunar
-            infrastructure, and the broader crewed-spaceflight narrative.
-          </p>
+      <section className="section">
+        <div className="stats-strip">
+          <div className="stats-strip-card glass">
+            <span className="meta-label">Tracked missions</span>
+            <strong>{counts.total}</strong>
+          </div>
+          <div className="stats-strip-card glass">
+            <span className="meta-label">Live now</span>
+            <strong>{counts.live}</strong>
+          </div>
+          <div className="stats-strip-card glass">
+            <span className="meta-label">Featured</span>
+            <strong>{counts.featured}</strong>
+          </div>
+          <div className="stats-strip-card glass">
+            <span className="meta-label">Future pathways</span>
+            <strong>{counts.future}</strong>
+          </div>
         </div>
+      </section>
 
-        <div className="mission-grid">
+      <section className="section">
+        <SectionHeading
+          kicker="Launch surface"
+          title="Start with the missions that naturally pull people in"
+          text="SpaceEdu launches with emotionally resonant, structurally rich mission categories that support both curiosity and product depth."
+        />
+
+        <div className="directory-grid">
           {featuredMissions.map((mission) => (
-            <article key={mission.name} className="mission-card glass">
-              <span className="mission-status">{mission.status}</span>
-              <h3>{mission.name}</h3>
-              <p>{mission.blurb}</p>
-              <a href="#launch" className="inline-link">
-                View concept
-                <ArrowRight size={16} />
-              </a>
-            </article>
+            <MissionCard key={mission.slug} mission={mission} />
           ))}
         </div>
       </section>
 
-      <section id="features" className="section">
-        <div className="section-heading">
-          <span className="section-kicker">Core product</span>
-          <h2>Built like a premium interface, not a static information page</h2>
-        </div>
+      <section className="section">
+        <SectionHeading
+          kicker="Core product"
+          title="Built like a real product, not a static educational page"
+        />
 
         <div className="feature-grid">
-          {features.map(({ icon: Icon, title, text }) => (
+          {featureCards.map(({ icon: Icon, title, text }) => (
             <article key={title} className="feature-card glass">
               <div className="feature-icon">
                 <Icon size={20} />
@@ -212,58 +196,108 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="vision" className="section vision-section">
+      <section className="section vision-section">
         <div className="vision-copy">
-          <span className="section-kicker">Why this wins</span>
-          <h2>SpaceEdu is the interface layer between space activity and public understanding</h2>
+          <span className="section-kicker">Why this gets big</span>
+          <h2>SpaceEdu can become the interface layer between space activity and public understanding</h2>
           <p>
-            The world does not need another generic content site. It needs a
-            product that makes missions trackable, understandable, visually
-            compelling, and personalized to curiosity.
+            This should evolve from a premium mission site into an adaptive
+            education and discovery engine that helps users understand missions,
+            systems, and the broader future of human exploration.
           </p>
 
           <ul className="pillar-list">
-            {pillars.map((pillar) => (
-              <li key={pillar}>{pillar}</li>
-            ))}
+            <li>Track missions in a premium, structured format</li>
+            <li>Explain systems in layers, from beginner to enthusiast</li>
+            <li>Guide users into related discoveries automatically</li>
+            <li>Expand toward school, museum, and dashboard products</li>
+            <li>Build a long-term mission intelligence graph underneath</li>
           </ul>
         </div>
 
         <div className="vision-panel glass">
-          <span className="section-kicker">Phase roadmap</span>
+          <span className="section-kicker">Build path</span>
+
           <div className="phase-item">
             <strong>Phase 1</strong>
-            <p>Premium landing experience + mission hub + concept pages.</p>
+            <p>Premium website, mission hubs, flagship pages, and clean product narrative.</p>
           </div>
+
           <div className="phase-item">
             <strong>Phase 2</strong>
-            <p>Accounts, saved watchlists, mission alerts, adaptive discovery.</p>
+            <p>Alerts, saved mission watchlists, discovery personalization, and user accounts.</p>
           </div>
+
           <div className="phase-item">
             <strong>Phase 3</strong>
-            <p>Education tools, API access, embeddable widgets, institutional products.</p>
+            <p>Education products, APIs, embeddable widgets, and institutional licensing.</p>
           </div>
         </div>
       </section>
 
-      <section id="launch" className="section cta-section">
+      <section className="section">
+        <SectionHeading
+          kicker="Product pathways"
+          title="The habit loop is discovery, understanding, and return"
+          text="The strongest version of SpaceEdu keeps users moving through a loop of mission following, educational depth, and personalized re-engagement."
+        />
+
+        <div className="split-grid">
+          {pathways.map((pathway) => (
+            <div key={pathway.title} className="content-card glass">
+              <div className="card-label">
+                <Activity size={16} />
+                <span>{pathway.title}</span>
+              </div>
+              <p>{pathway.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <SectionHeading
+          kicker="Expansion layer"
+          title="This grows from mission pages into a full education + intelligence platform"
+          text="The current site is now structured to support dynamic routing, APIs, search, filtering, and a future saved-state data layer."
+        />
+
+        <div className="directory-grid">
+          {missions.slice(0, 4).map((mission) => (
+            <div key={mission.slug} className="content-card glass">
+              <div className="card-label">
+                <Orbit size={16} />
+                <span>{mission.program}</span>
+              </div>
+              <h2>{mission.name}</h2>
+              <p>{mission.whyItMatters}</p>
+              <Link href={`/missions/${mission.slug}`} className="inline-link">
+                Open pathway
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section cta-section">
         <div className="cta-card glass">
-          <span className="section-kicker">Blitzscale launch surface</span>
-          <h2>Space exploration is getting more active. The public interface should too.</h2>
+          <span className="section-kicker">Next move</span>
+          <h2>Build the best public-facing interface for the new space era</h2>
           <p>
-            SpaceEdu is positioned to become the premium front door for live
-            mission discovery, understanding, and education.
+            SpaceEdu should feel like the premium front door for understanding
+            where human exploration is going next.
           </p>
           <div className="hero-actions">
-            <a href="https://github.com" className="btn btn-primary">
-              Push to GitHub
-            </a>
-            <a href="https://vercel.com" className="btn btn-secondary">
-              Deploy on Vercel
-            </a>
+            <Link href="/missions" className="btn btn-primary">
+              Open Mission Directory
+            </Link>
+            <Link href="/dashboard" className="btn btn-secondary">
+              Open Product Dashboard
+            </Link>
           </div>
         </div>
       </section>
-    </main>
+    </PageShell>
   );
 }
