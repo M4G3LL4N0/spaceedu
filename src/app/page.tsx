@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ProductHonestyNote } from "@/components/ProductHonestyNote";
 import {
   ArrowRight,
   Radar,
@@ -15,7 +16,6 @@ import PageShell from "@/components/PageShell";
 import SectionHeading from "@/components/SectionHeading";
 import MissionCard from "@/components/missions/MissionCard";
 import { getFeaturedMissions, getMissionCounts, missions } from "@/data/missions";
-
 const featureCards = [
   {
     icon: Radar,
@@ -59,8 +59,9 @@ export default function HomePage() {
   const counts = getMissionCounts();
 
   return (
+    <div>
     <PageShell>
-      <section className="hero">
+      <section className="hero" data-reveal>
         <div className="hero-copy">
           <div className="eyebrow">
             <Rocket size={16} />
@@ -81,7 +82,7 @@ export default function HomePage() {
           </p>
 
           <div className="hero-actions">
-            <Link href="/missions" className="btn btn-primary">
+            <Link href="/missions" className="btn btn-primary" aria-label="Primary action">
               Explore Missions
               <ArrowRight size={18} />
             </Link>
@@ -91,24 +92,24 @@ export default function HomePage() {
           </div>
 
           <div className="hero-stats">
-            <div className="stat-card">
+            <div className="motion-card motion-hover-lift stat-card">
               <span className="stat-kicker">Product</span>
               <strong>Interactive space education platform</strong>
             </div>
-            <div className="stat-card">
+            <div className="motion-card motion-hover-lift stat-card">
               <span className="stat-kicker">Wedge</span>
               <strong>Artemis + Moon + human spaceflight</strong>
             </div>
-            <div className="stat-card">
+            <div className="motion-card motion-hover-lift stat-card">
               <span className="stat-kicker">Expansion</span>
               <strong>Dashboard + discovery + learning graph</strong>
             </div>
           </div>
         </div>
 
-        <div className="hero-panel">
-          <div className="panel glass">
-            <div className="panel-topline">
+        <div className="motion-card motion-hover-lift hero-panel">
+          <div className="motion-card motion-hover-lift panel glass">
+            <div className="motion-card motion-hover-lift panel-topline">
               <span className="live-dot" />
               <span>Flagship interface concept</span>
             </div>
@@ -120,7 +121,7 @@ export default function HomePage() {
               pathways into deeper understanding.
             </p>
 
-            <div className="panel-grid">
+            <div className="motion-card motion-hover-lift panel-grid">
               <div className="mini-card">
                 <Telescope size={18} />
                 <span>Mission pages</span>
@@ -142,7 +143,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" data-reveal>
         <div className="stats-strip">
           <div className="stats-strip-card glass">
             <span className="meta-label">Tracked missions</span>
@@ -163,7 +164,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" data-reveal>
         <SectionHeading
           kicker="Launch surface"
           title="Start with the missions that naturally pull people in"
@@ -177,7 +178,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" data-reveal>
         <SectionHeading
           kicker="Core product"
           title="Built like a real product, not a static educational page"
@@ -196,7 +197,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section vision-section">
+      <section className="section vision-section" data-reveal>
         <div className="vision-copy">
           <span className="section-kicker">Why this gets big</span>
           <h2>SpaceEdu can become the interface layer between space activity and public understanding</h2>
@@ -215,7 +216,7 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <div className="vision-panel glass">
+        <div className="motion-card motion-hover-lift vision-panel glass">
           <span className="section-kicker">Build path</span>
 
           <div className="phase-item">
@@ -235,7 +236,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" data-reveal>
         <SectionHeading
           kicker="Product pathways"
           title="The habit loop is discovery, understanding, and return"
@@ -255,7 +256,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" data-reveal>
         <SectionHeading
           kicker="Expansion layer"
           title="This grows from mission pages into a full education + intelligence platform"
@@ -280,7 +281,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section cta-section">
+      <section className="section cta-section" data-reveal>
         <div className="cta-card glass">
           <span className="section-kicker">Next move</span>
           <h2>Build the best public-facing interface for the new space era</h2>
@@ -299,5 +300,8 @@ export default function HomePage() {
         </div>
       </section>
     </PageShell>
+
+      <ProductHonestyNote status="demo" />
+    </div>
   );
 }
